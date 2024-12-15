@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AppView: View {
-  @AppStorage("showTabBar") private var showTabBar: Bool = false
+  //  @AppStorage("showTabBar") var showTabBar: Bool = false
+  @AppStorage("showTabbarView") var showTabBar: Bool = false
 
   var body: some View {
     AppViewBuilder(
@@ -22,17 +23,17 @@ struct AppView: View {
       tabBarView: {
         ZStack {
           Color.green.ignoresSafeArea()
-          Text("Tabbar")
+          Text("TabBar")
         }
-
       }
     )
-    .onTapGesture {
-      showTabBar.toggle()
-    }
   }
 }
 
-#Preview {
-  AppView()
+#Preview("AppView - TabBar") {
+  AppView(showTabBar: true)
+}
+
+#Preview("AppView - Onboarding") {
+  AppView(showTabBar: false)
 }
